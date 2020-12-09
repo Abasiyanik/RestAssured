@@ -35,6 +35,22 @@ public class C2_HamcrestIntro {
     assertThat(1+3, greaterThan(3));
 
     }
+    @Test
+    public void testString(){
+        String str = "Rest Assured is cool so far" ;
+        // assert the str is "Rest Assured is cool so far"
+        assertThat(str, is("Rest Assured is cool so far"));
+        // assert the str is "Rest Assured IS COOL so far" in case insensitive manner
+        assertThat(str, equalToIgnoringCase("Rest Assured IS COOL so far") );
+        // assert the str startWith "Rest"
+        assertThat(str, startsWith("Rest") );
+        // assert the str endWith "so far"
+        assertThat(str , endsWith("so far") );
+        // assert the str contains "is cool"
+        assertThat(str , containsString("is cool") );
+        // assert the str contains "IS COOL" case insensitive manner
+        assertThat(str, containsStringIgnoringCase("IS COOL"));
+    }
 
 
 

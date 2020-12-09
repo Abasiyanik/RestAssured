@@ -1,5 +1,6 @@
 package day01;
 
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,10 +41,26 @@ public class C3_RestAssureIntro {
         String payLoadAsStr=response.prettyPrint();
         //assertThat the body is Hellof from Sparta
         assertThat(payLoadAsStr, is("Hello from Sparta"));
-
+// headerdaki content type i 3 sekilde elde edilir
         System.out.println(response.getHeader("Content-Type"));
         System.out.println(response.getContentType());
         System.out.println(response.contentType());
+        String contenttype =response.contentType();
+        //hadi bunu assert edelim
+        assertThat(contenttype, is("text/plain;charset=UTF-8"));
+        assertThat(contenttype, containsString("text/plain"));
+        assertThat(contenttype, startsWith("text"));
+
+        // Easy way to work with Content-type without typing much
+        // We can use ContentType Enum from RestAssured to easily get main part content-type
+        // ContentType.TEXT -->> text/plain as Enum
+        // startWith accept a String object
+        // so use toString method to turn ContentType.TEXT to String so we can use it startWith
+
+        assertThat(contenttype, startsWith (ContentType.TEXT.toString()));//
+        assertThat(contenttype, is (not(ContentType.JSON)));
+
+
 
 
 
