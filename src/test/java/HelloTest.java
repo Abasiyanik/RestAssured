@@ -21,7 +21,7 @@ public class HelloTest {
 
     @AfterEach
     public void tearDownTest(){
-        System.out.println("@AfterEach is runnig");}
+        System.out.println("@AfterEach is running");}
 
     @Test
     public void test1(){
