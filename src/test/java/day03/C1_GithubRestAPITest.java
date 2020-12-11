@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-public class GithubRestAPITest {
+public class C1_GithubRestAPITest {
 
     //create a test for testing github rest api users/user endpoint https://api.github.com/users/Abasiyanik
 
@@ -22,11 +22,11 @@ public class GithubRestAPITest {
     public void testGitHub() {
 
        given()
-               .pathParam("username", "Abasiyanik").
+               .pathParam("kullaniciadi", "Abasiyanik").
        when()
-               .get("https://api.github.com/users/{username}").
+               .get("https://api.github.com/users/{kullaniciadi}").
         then()
-               .assertThat()
+               .assertThat()//bu useless isa yaramaz sadece okunusu kolaylastirir
                .statusCode(is(200))
                 .contentType(ContentType.JSON)
                 .header("server", "GitHub.com")
