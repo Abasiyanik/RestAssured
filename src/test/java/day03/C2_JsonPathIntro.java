@@ -99,7 +99,43 @@ public class C2_JsonPathIntro {
         List<Long>allPhones=jp.getList("phone");
         System.out.println("allPhones = " + allPhones);
 
+    }
+    //send request ot this rewuest urL
+    //http://54.158.53.176:8000/api/spartans/search?nameContains=de&gender=Male
+    //get the name of the first guy in the results
+    //get all names, all phones save it as list
+    //save the value of field called empty under payable in the response
+    //print it out
+
+    @DisplayName("testsing /spartans.search and extracting data")
+    @Test
+    public void testSearch() {
+
+           JsonPath jp=     given()
+                                    .queryParam("nameContains", "de")
+                                    .queryParam("gender", "Male").
+                            when()
+                                    .get("/spartans/search") //gerisini queryParam halleder
+                                    .jsonPath();//bu sayede ne kadar sonuc varsa jp ye yuklenir
+
+        //simdi jp den istenen bilgi sagilmalidir oda 1) birincinin adi
+        System.out.println("jp.getString(\"content[0].name\") = " + jp.getString("content[0].name"));//Golden
+// ucuncunun adamin phonei
+        System.out.println("jp.getLong(\"content[2].phone\") = " + jp.getLong("content[2].phone"));
+//how to get all the names
+        List<String> allNames=jp.getList("content.name");
+        System.out.println("allNames = " + allNames);
+        System.out.println("jp.getList(\"content.name\") = " + jp.getList("content.name"));
+//how to get all phone numbers
+        List<Long>allPhones=jp.getList("content.phone");
+        System.out.println("allPhones = " + allPhones);
+        System.out.println("jp.getList(\"content.phone\") = " + jp.getList("content.phone"));
+
+        System.out.println("value of field empty :" +
+                jp.getBoolean("pageable.sort.empty"));
+
+    }
 
 
 
-    }}
+}
