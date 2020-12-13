@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utility.ConfigurationReader;
 
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class C3_AssertingCollectionIntheChain {
 
     @BeforeAll
     public static void setUp() {
-        baseURI = "http://54.161.137.82:8000";
+       // baseURI = "http://54.161.137.82:8000";
+        baseURI = ConfigurationReader.getProperty("spartan.base_url");
         basePath = "/api";
     }
 
@@ -40,7 +42,7 @@ public class C3_AssertingCollectionIntheChain {
 
         given()
                 .log().all()
-                .auth().basic("admin", "admin")
+                .auth().basic(ConfigurationReader.getProperty("spartan.admin.username"), ConfigurationReader.getProperty("spartan.admin.password"))
                 .queryParam("nameContains", "a")
                 .queryParam("gender", "Female").
         when()
