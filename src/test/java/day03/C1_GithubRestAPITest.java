@@ -28,8 +28,8 @@ public class C1_GithubRestAPITest {
         then()
                .assertThat()//bu useless isa yaramaz sadece okunusu kolaylastirir
                .statusCode(is(200))
-                .contentType(ContentType.JSON)
-                .header("server", "GitHub.com")
+               .contentType(ContentType.JSON)
+               .header("server", "GitHub.com")
                .body("login", is("Abasiyanik"))
        ;
 
