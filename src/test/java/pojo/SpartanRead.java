@@ -1,34 +1,35 @@
 package pojo;
+//This is a POJO Cclass
+//used to represent Spratn data in response jso/*
+/*
+it has 4 fields : id, name. gender. phone
 
-//A Pojo (Plain Old java Object) class
-// is used to create object that represent data
-// it must have
-// encapsulated fields
-// public no arg constructor
-//A POJO (Plain Old java Object) class
-// is used to create object that represent data
-// for example :
-// This is an Java object that contains 3 values for 3 fields
-//Spartan sp1 = new Spartan("B20 user","Male",1234567890L) ;
-//
-// A POJO Class must have
-// encapsulated fields
-// public no arg constructor
-// everything else is optional
-public class Spartan {
+ */
 
+public class SpartanRead {
+    private int id;
     private String name;
     private String gender;
     private long phone ;
 
-    public Spartan(){
+    public SpartanRead(){
 
     }
+//althoug i do not need conrstuructor i use it
 
-    public Spartan(String name, String gender, long phone) {
+    public SpartanRead(int id, String name, String gender, long phone) {
+        this.id = id;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -57,8 +58,9 @@ public class Spartan {
 
     @Override
     public String toString() {
-        return "Spartan{" +
-                "name='" + name + '\'' +
+        return "SpartanRead{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", phone=" + phone +
                 '}';
