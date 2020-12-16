@@ -7,13 +7,13 @@ import static org.junit.jupiter.api.MethodOrderer.*;// bunu static olarak import
 
 //thse are all available optionsfor ordering test
 //Based on @Order()
-//@TestMethodOrder(OrderAnnotation.class)//this is necessary for ordering test methods based upon @Order() tag
+@TestMethodOrder(OrderAnnotation.class)//this is necessary for ordering test methods based upon @Order() tag
 
 //Random
 //@TestMethodOrder(Random.class)// to randimize the test
 //default, based on method name
 //@TestMethodOrder(MethodName.class)//order based on methodname
-@TestMethodOrder(MethodOrderer.DisplayName.class)//order based on methodname
+//@TestMethodOrder(MethodOrderer.DisplayName.class)//order based on methodname
 public class C4_TestOrderingInJunit5 {
 
 

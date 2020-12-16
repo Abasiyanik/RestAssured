@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utility.ConfigurationReader;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class C2_JsonPathIntro {
 
     @BeforeAll
     public static void setUp(){
+        baseURI = ConfigurationReader.getProperty("spartan.base_url");
         baseURI="http://54.158.53.176:8000";
         basePath="/api";
     }

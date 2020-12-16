@@ -42,6 +42,7 @@ public class C3_AssertingCollectionIntheChain {
 
         given()
                 .log().all()
+                //.auth().basic("admin", "admin")
                 .auth().basic(ConfigurationReader.getProperty("spartan.admin.username"), ConfigurationReader.getProperty("spartan.admin.password"))
                 .queryParam("nameContains", "a")
                 .queryParam("gender", "Female").

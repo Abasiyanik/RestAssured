@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.*;
+import utility.ConfigurationReader;
 
 import java.io.File;
 import java.util.LinkedHashMap;
@@ -26,7 +27,8 @@ in then section of the method chaining
 
     @BeforeAll
     public static void setUp() {
-        baseURI = "http://54.161.137.82:8000";
+        //baseURI = "http://54.161.137.82:8000";
+        baseURI = ConfigurationReader.getProperty("spartan.base_url");
         basePath = "/api";
     }
 
