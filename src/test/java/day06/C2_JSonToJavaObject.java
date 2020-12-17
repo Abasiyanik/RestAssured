@@ -24,6 +24,7 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import pojo.Spartan;
+import pojo.SpartanRead;
 import utility.ConfigurationReader;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.DisplayName;
@@ -66,8 +67,17 @@ public class C2_JSonToJavaObject {
         JsonPath jp=response.jsonPath();
 
 // how ot convert all json to jave object
+        // JsonPath jp = response.jsonPath();
+        Map<String,Object> responseMap =  jp.getMap("") ;
+        System.out.println("responseMap = " + responseMap);
 
-       // jp.getMap("")
+        //goal is to convert it to something
+
+        SpartanRead sp=jp.getObject("",SpartanRead.class);
+        System.out.println("sp = " + sp);
+
+
+        // jp.getMap("")
 //        {
 //            "id": 65,
 //                "name": "Bart",
@@ -98,15 +108,32 @@ public class C2_JSonToJavaObject {
  *
  *
  */
-       // JsonPath jp = response.jsonPath();
-        Map<String,Object> responseMap =  jp.getMap("") ;
-        System.out.println("responseMap = " + responseMap);
+
+    }
+    @DisplayName("Get All Data and Save Response JsonArray As Java Object")
+    @Test
+    public void getOneSpartanAndSaveResponseJsonAsJavaObject(){
+
+
+        Response response = given()
+                .auth().basic("admin", "admin").
+                        when()
+                .get("/spartans") ;
+
+        JsonPath jp = response.jsonPath() ;
+
+        List<SpartanRead> allSpartanPOJOs = jp.getList("", SpartanRead.class);
+
+
+        //System.out.println("allSpartanPOJOs = \n" + allSpartanPOJOs);
+        allSpartanPOJOs.forEach(System.out::println);
+
     }
 
-                /*then()
-                .assertThat()
-                .statusCode(is(200))
-                .contentType(ContentType.JSON);*/
+    // Send request to /api/spartans/search endpoint
+    // save your jsonArray from search result into
+    // List of SpartanRead POJO
+
 
 
 }
