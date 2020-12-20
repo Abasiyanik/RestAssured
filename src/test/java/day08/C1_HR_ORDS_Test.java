@@ -13,7 +13,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.*;
-public class HR_ORDS_Test extends HR_ORDS_TestBase {
+public class C1_HR_ORDS_Test extends HR_ORDS_TestBase {
     //http://54.90.101.103:1000/ords/hr/countries/AR
  /*   @BeforeAll
     public static void setUp(){
